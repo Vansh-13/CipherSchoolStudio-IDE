@@ -1,7 +1,6 @@
-/* -------------------- Wrapper -------------------- */
 .project-list-wrapper {
   min-height: calc(100vh - 64px);
-  background-color: #1e1e2f; /* VS Code dark background */
+  background-color: #1e1e2f;
   color: #d4d4d4;
   font-family: 'Fira Code', monospace;
   padding: 30px 40px;
@@ -9,6 +8,7 @@
   flex-direction: column;
   gap: 25px;
   transition: background 0.3s, color 0.3s;
+  box-sizing: border-box;
 }
 
 .project-list-wrapper.light {
@@ -16,13 +16,12 @@
   color: #333;
 }
 
-/* -------------------- Header -------------------- */
 .project-header {
   display: flex;
-  flex-wrap: wrap; /* Wrap elements on small screens */
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .project-title {
@@ -30,10 +29,17 @@
   font-weight: 500;
   color: #61dafb;
   letter-spacing: 0.5px;
-  flex: 1 1 auto; /* Take available space */
+  flex: 1 1 auto;
 }
 
-/* -------------------- New Project Button -------------------- */
+.project-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .new-project-button {
   background: linear-gradient(135deg, #0db7ed, #0a95c8);
   color: #fff;
@@ -44,7 +50,7 @@
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: all 0.2s ease;
-  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .new-project-button:hover {
@@ -53,7 +59,6 @@
   box-shadow: 0 6px 15px rgba(0,0,0,0.4);
 }
 
-/* -------------------- Search Bar -------------------- */
 .search-bar {
   padding: 8px 12px;
   border-radius: 6px;
@@ -63,8 +68,8 @@
   font-size: 14px;
   outline: none;
   transition: all 0.2s ease;
-  flex: 1 1 200px; /* Make it flexible */
-  min-width: 150px; /* Avoid shrinking too much */
+  flex: 1 1 220px;
+  min-width: 180px;
 }
 
 .search-bar:focus {
@@ -78,7 +83,6 @@
   color: #333;
 }
 
-/* -------------------- Project Cards -------------------- */
 .project-cards {
   display: flex;
   flex-wrap: wrap;
@@ -113,7 +117,6 @@
   background-color: #e6f2ff;
 }
 
-/* -------------------- Project Name -------------------- */
 .project-name {
   font-weight: 500;
   font-size: 15px;
@@ -129,7 +132,6 @@
   text-decoration: underline;
 }
 
-/* -------------------- Hover Actions (Icons) -------------------- */
 .hover-actions {
   display: flex;
   gap: 8px;
@@ -141,7 +143,6 @@
   opacity: 1;
 }
 
-/* -------------------- Inline Rename Input -------------------- */
 .rename-input {
   background: #2b2b45;
   border: 1px solid #61dafb;
@@ -159,7 +160,6 @@
   box-shadow: 0 0 6px #007acc66;
 }
 
-/* -------------------- No Projects -------------------- */
 .no-projects {
   font-size: 15px;
   color: #aaa;
@@ -167,26 +167,49 @@
   margin-top: 20px;
 }
 
-/* -------------------- Responsive -------------------- */
 @media (max-width: 1024px) {
-  .project-list-wrapper { padding: 25px; }
-  .project-title { font-size: 22px; }
-  .new-project-button { padding: 8px 16px; font-size: 13px; }
-  .project-card { flex: 1 1 45%; padding: 12px 14px; }
-  .delete-button, .rename-button { padding: 4px 8px; font-size: 12px; }
-  .project-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .project-list-wrapper {
+    padding: 25px;
+  }
+  .project-title {
+    font-size: 22px;
+  }
+  .project-card {
+    flex: 1 1 45%;
+    padding: 12px 14px;
+  }
 }
 
 @media (max-width: 600px) {
+  .project-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .project-controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .search-bar,
+  .new-project-button {
+    width: 100%;
+  }
+
+  .project-cards {
+    flex-direction: column;
+  }
+
   .project-card {
     flex: 1 1 100%;
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
-  .hover-actions { opacity: 1; }
-  .project-header { flex-direction: column; align-items: stretch; gap: 10px; }
-  .search-bar, .new-project-button {
-    width: 100%; /* Full width on small screens */
+
+  .hover-actions {
+    opacity: 1;
   }
 }
