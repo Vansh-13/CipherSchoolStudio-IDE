@@ -10,11 +10,13 @@ export default function Login({ theme }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // start loading
     try {
       const { data } = await api.post("/auth/login", { email, password });
       login(data.token, data.user);
@@ -23,6 +25,8 @@ export default function Login({ theme }) {
     } catch (err) {
       const message = err.response?.data?.message || "Invalid email or password";
       toast.error(message, { theme });
+    } finally {
+      setLoading(false); // stop loading
     }
   };
 
@@ -44,6 +48,7 @@ export default function Login({ theme }) {
       <div className="login-right">
         <form onSubmit={handleSubmit} className={`login-form ${theme}`}>
           <h1 className="login-title">Login</h1>
+
           <input
             type="email"
             placeholder="Email"
@@ -70,7 +75,19 @@ export default function Login({ theme }) {
             </span>
           </div>
 
-          <button className={`login-button ${theme}`}>Login</button>
+
+          <button
+            className={`login-button ${theme}`}
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? (
+              <div className="spinner"></div>
+            ) : (
+              "Login"
+            )}
+          </button>
+
           <p className="login-footer">
             Don't have an account?{" "}
             <Link className="login-link" to="/register">
