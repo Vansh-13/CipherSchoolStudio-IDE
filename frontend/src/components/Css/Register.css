@@ -8,6 +8,7 @@
   color: #d4d4d4;
   padding: 20px;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .register-form, .login-form {
@@ -133,9 +134,31 @@
   background-color: #005ea3;
 }
 
-@media (max-width: 480px) {
+/* Password Eye Wrapper */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.toggle-eye:hover {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .register-form, .login-form {
-    padding: 28px;
+    padding: 32px;
   }
   .register-title, .login-title {
     font-size: 24px;
@@ -149,21 +172,28 @@
     padding: 12px;
   }
 }
-.password-wrapper {
-  position: relative;
-  width: 100%;
-}
 
-.toggle-eye {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #666;
-  font-size: 1.1rem;
-}
-
-.toggle-eye:hover {
-  color: #000;
+@media (max-width: 480px) {
+  .register-form, .login-form {
+    padding: 28px;
+    max-width: 320px;
+  }
+  .register-title, .login-title {
+    font-size: 22px;
+  }
+  .register-input, .login-input {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+  .register-button, .login-button {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .password-wrapper {
+    flex-direction: row;
+    align-items: center;
+  }
+  .toggle-eye {
+    right: 10px;
+  }
 }
