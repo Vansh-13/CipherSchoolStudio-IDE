@@ -16,17 +16,27 @@ export default function Login({ theme }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // start loading
+    setLoading(true);
+
+
+    toast.info("Logging in...", { theme, autoClose: 1000 });
+
     try {
       const { data } = await api.post("/auth/login", { email, password });
+
+
       login(data.token, data.user);
-      toast.success("Login Successful", { theme });
-      navigate("/dashboard");
+
+      toast.success("Login Successful!", { theme, autoClose: 1000 });
+
+      
+      setTimeout(() => navigate("/dashboard"), 800);
     } catch (err) {
-      const message = err.response?.data?.message || "Invalid email or password";
+      const message =
+        err.response?.data?.message || "Invalid email or password";
       toast.error(message, { theme });
     } finally {
-      setLoading(false); // stop loading
+      setLoading(false);
     }
   };
 
@@ -36,8 +46,10 @@ export default function Login({ theme }) {
         <h1>Welcome to CipherStudio IDE</h1>
         <p>
           CipherStudio is your modern browser-based coding playground. Write,
-          run, and manage projects like in a real IDE.
+          run, and manage projects just like in a real IDE.
         </p>
+
+      
         <div className="login-animation">
           <div className="code-line line1"></div>
           <div className="code-line line2"></div>
@@ -74,7 +86,6 @@ export default function Login({ theme }) {
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
-
 
           <button
             className={`login-button ${theme}`}
