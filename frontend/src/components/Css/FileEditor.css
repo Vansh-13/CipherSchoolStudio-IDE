@@ -1,0 +1,44 @@
+.file-editor-container {
+  height: 80vh;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.file-editor-container.dark {
+  border: 1px solid #555;
+  background-color: #1e1e1e;
+}
+
+/* Optional: give a subtle shadow */
+.file-editor-container {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.file-editor-container.dark {
+  box-shadow: 0 2px 6px rgba(68, 17, 17, 0.05);
+}
+.file-editor-container {
+  height: 80vh;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  border: 1px solid #ccc;
+}
+
+.file-editor-container.light {
+  background: #f9f9f9;
+  color: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.file-editor-container.dark {
+  background: #1e1e1e;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+.sp-layout {
+  height: 100% !important;
+}
