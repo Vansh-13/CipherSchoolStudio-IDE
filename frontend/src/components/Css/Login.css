@@ -1,12 +1,11 @@
-
 .login-container {
   display: flex;
   height: 100vh;
   font-family: 'Fira Code', monospace, 'Segoe UI', sans-serif;
   overflow: hidden;
   transition: background-color 0.3s;
+  flex-wrap: wrap;
 }
-
 
 .login-left {
   flex: 1;
@@ -31,7 +30,6 @@
   line-height: 1.6;
   color: #a0a0b0;
 }
-
 
 .login-animation {
   position: absolute;
@@ -59,7 +57,6 @@
   40% { opacity: 1; transform: translateX(0); }
 }
 
-/* Right Login Form Section */
 .login-right {
   flex: 1;
   background: #252539;
@@ -112,6 +109,26 @@
   box-shadow: 0 0 6px rgba(97, 218, 251, 0.6);
 }
 
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: #666;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.toggle-eye:hover {
+  color: #fff;
+}
+
 .login-button {
   width: 100%;
   padding: 14px;
@@ -146,28 +163,18 @@
   text-decoration: underline;
 }
 
-.password-wrapper {
-  position: relative;
-  width: 100%;
-}
+/* Light theme */
+.login-container.light { background-color: #f5f5f5; color: #333; }
+.login-left.light { background: #eaf4fc; color: #007acc; }
+.login-right.light { background: #fff; }
+.login-form.light { background-color: #fff; color: #333; border: 1px solid #ccc; }
+.login-input.light { background-color: #fff; color: #333; border: 1px solid #aaa; }
+.login-button.light { background-color: #007acc; color: #fff; }
+.login-button.light:hover { background-color: #005ea3; }
 
-.toggle-eye {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #666;
-  font-size: 1.1rem;
-}
-
-.toggle-eye:hover {
-  color: #000;
-}
-
-
+/* Responsive */
 @media (max-width: 1024px) {
-  .login-container { flex-direction: column; }
+  .login-container { flex-direction: column; height: auto; }
   .login-left, .login-right { flex: unset; width: 100%; padding: 40px; }
   .login-left { order: 2; text-align: center; }
   .login-animation { position: relative; bottom: unset; left: unset; justify-content: center; margin-top: 20px; }
@@ -190,13 +197,6 @@
   .login-title { font-size: 22px; }
   .login-input { font-size: 13px; padding: 10px; }
   .login-button { font-size: 13px; padding: 10px; }
+  .password-wrapper { flex-direction: row; align-items: center; }
+  .toggle-eye { right: 10px; }
 }
-
-
-.login-container.light { background-color: #f5f5f5; color: #333; }
-.login-left.light { background: #eaf4fc; color: #007acc; }
-.login-right.light { background: #fff; }
-.login-form.light { background-color: #fff; color: #333; border: 1px solid #ccc; }
-.login-input.light { background-color: #fff; color: #333; border: 1px solid #aaa; }
-.login-button.light { background-color: #007acc; color: #fff; }
-.login-button.light:hover { background-color: #005ea3; }
