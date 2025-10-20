@@ -58,5 +58,6 @@ CipherStudio is a **mini online IDE built with React**, letting you **create, ma
 1. Clone this repo:
 
 ```bash
-git clone https://github.com/Vansh-13/CipherStudio-IDE.git
+git clone https://github.com/Vansh-13/CipherSchoolStudio-IDE
+.git
 cd cipherstudio
